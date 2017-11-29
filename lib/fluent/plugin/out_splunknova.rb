@@ -1,5 +1,5 @@
 require 'fluent/output'
-
+require 'yajl/json_gem'
 
 module Fluent
     class SplunkNovaOutput < Output
@@ -7,9 +7,18 @@ module Fluent
       # and identifies the plugin in the configuration file.
       Fluent::Plugin.register_output('splunknova', self)
 
+      # Nova Splunk configuration parameters
+      config_param :splunk_url,     :string,   :default => 'https://api.splunknova.com'
+      config_param :splunk_token,   :string
+      config_param :splunk_format,  :string,   :default => 'nova'
+      config_param :splunk_url_path,  :string, :default => '/v1/events'
+
+
       # This method is called before starting.
       def configure(conf)
         super
+        @splunk_full_url = @splunk_url + @splunk_url_path
+        log.debug 'splunknova: sent data to ' + @splunk_full_url
       end
 
       # This method is called when starting.
