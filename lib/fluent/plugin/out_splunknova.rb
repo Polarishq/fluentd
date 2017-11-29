@@ -2,7 +2,7 @@ require 'fluent/output'
 require 'yajl/json_gem'
 
 module Fluent
-    class SplunkNovaOutput < Output
+    class SplunkNovaOutput < BufferedOutput
       # First, register the plugin. NAME is the name of this plugin
       # and identifies the plugin in the configuration file.
       Fluent::Plugin.register_output('splunknova', self)
@@ -31,18 +31,30 @@ module Fluent
         super
       end
 
-      # This method is called when an event reaches Fluentd.
-      # 'es' is a Fluent::EventStream object that includes multiple events.
-      # You can use 'es.each {|time,record| ... }' to retrieve events.
-      # 'chain' is an object that manages transactions. Call 'chain.next' at
-      # appropriate points and rollback if it raises an exception.
-      #
-      # NOTE! This method is called by Fluentd's main thread so you should not write slow routine here. It causes Fluentd's performance degression.
-      def emit(tag, es, chain)
-        chain.next
-        es.each {|time,record|
-          log.info "OK!"
-        }
+    # This method is called when an event reaches to Fluentd.
+    # Convert the event to a raw string.
+    def format(tag, time, record)
+        [tag, time, record].to_msgpack
+      end
+
+
+    # This method is called every flush interval. Write the buffer chunk
+    # to files or databases here.
+    # 'chunk' is a buffer chunk that includes multiple formatted
+    # events. You can use 'data = chunk.read' to get all events and
+    # 'chunk.open {|io| ... }' to get IO objects.
+    #
+    # NOTE! This method is called by internal thread, not Fluentd's main thread. So IO wait doesn't affect other plugins.
+    def write(chunk)
+        data = chunk.read
+        print data
       end
     end
+
+    class SplunkNovaOutputError < StandardError
+        def initialize(message, status_code, invalid_event_number, http_status_code)
+          super("#{message} (http status code #{http_status_code}, status code #{status_code}, invalid event number #{invalid_event_number})")
+        end
+      end
+
   end

@@ -38,4 +38,10 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
         assert_equal SPLUNK_URL_PATH, d.instance.splunk_url_path
       end
 
+      def test_should_require_mandatory_parameter_token
+        assert_raise Fluent::ConfigError do
+            create_driver_slunknova(%[])
+        end
+      end
+
 end
