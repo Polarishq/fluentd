@@ -3,8 +3,8 @@ require 'webmock/test_unit'
 
 
 class SplunkNovaOutputTest < Test::Unit::TestCase
-    SPLUNK_URL = 'https://api-bbourbie.splunknova.com'
-    SPLUNK_TOKEN = 'YlU3ak9sTGRFYXI1VldhNG5abHhDNFNPRVFqMzZrSVg6dkVJb2RVNU0tQm54Y013TFdKc244d0V4bmlRVVl1V2xBdTBlXzRHYVY3cjZic3VOR2w3Wkdrb0ZKWXNVdTRHdg=='
+    SPLUNK_URL = 'https://api-bbourbie.splunknovadev.com:443'
+    SPLUNK_TOKEN = 'QlA0YjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0JreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSg=='
     SPLUNK_FORMAT = 'nova'
     SPLUNK_URL_PATH = '/v1/events'
 
@@ -29,7 +29,6 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
         stub_request(:any, SPLUNK_FULL_URL)
       end
 
-
     def test_should_configure_splunknova
         d = create_driver_slunknova
         assert_equal SPLUNK_URL, d.instance.splunk_url
@@ -38,10 +37,22 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
         assert_equal SPLUNK_URL_PATH, d.instance.splunk_url_path
       end
 
-      def test_should_require_mandatory_parameter_token
+    def test_should_require_mandatory_parameter_token
         assert_raise Fluent::ConfigError do
             create_driver_slunknova(%[])
         end
+      end
+
+    def test_should_post_formatted_event_to_splunknova
+        splunk_request = stub_request(:post, SPLUNK_FULL_URL)
+        sourcetype = 'log'
+        time = 123456
+        record = "Message to send"
+        d = create_driver_slunknova(CONFIG + %[sourcetype #{sourcetype}])
+        d.run do
+          d.emit(record, time)
+        end
+        assert_requested(splunk_request)
       end
 
 end
