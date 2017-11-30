@@ -3,7 +3,7 @@ require 'yajl/json_gem'
 #require 'net/http'
 
 module Fluent
-    class SplunkNovaOutput < BufferedOutput
+    class SplunkNovaOutput < Output
       # First, register the plugin. NAME is the name of this plugin
       # and identifies the plugin in the configuration file.
       Fluent::Plugin.register_output('splunknova', self)
@@ -44,35 +44,35 @@ module Fluent
         super
       end
 
-    # This method is called when an event reaches to Fluentd.
-    # Convert the event to a raw string.
-    def format(tag, time, record)
-        [tag, time, record].to_msgpack
-      end
-
-
-    # This method is called every flush interval. Write the buffer chunk
-    # to files or databases here.
-    # 'chunk' is a buffer chunk that includes multiple formatted
-    # events. You can use 'data = chunk.read' to get all events and
-    # 'chunk.open {|io| ... }' to get IO objects.
+    # This method is called when an event reaches Fluentd.
+    # 'es' is a Fluent::EventStream object that includes multiple events.
+    # You can use 'es.each {|time,record| ... }' to retrieve events.
+    # 'chain' is an object that manages transactions. Call 'chain.next' at
+    # appropriate points and rollback if it raises an exception.
     #
-    # NOTE! This method is called by internal thread, not Fluentd's main thread. So IO wait doesn't affect other plugins.
-    # Loop through all records and sent them to Splunk
-    def write(chunk)
-        chunk.msgpack_each {|(tag,time,record)|
-          sourcetype = @sourcetype == 'tag' ? tag : @sourcetype
-          body = {}
-          body["time"] = time.to_s
-          body["entity"] = record
-          body["sourcetype"] = sourcetype
-          body["source"] = @source
-          body["index"] = @index
-          body["host"] = @event_host
-          send_to_novasplunk(body.to_json)
-        }
-      end
+    # NOTE! This method is called by Fluentd's main thread so you should not write slow routine here. It causes Fluentd's performance degression.
+    def emit(tag, es, chain)
+      chain.next
+      es.each {|time,record|
+        sourcetype = @sourcetype == 'tag' ? tag : @sourcetype
+        case record
+        when Hash
+          event = record["log"]
+        else
+          event = record
+        end
 
+        body = {}
+        body["time"] = time.to_i.to_s
+        body["entity"] = sourcetype
+        body["sourcetype"] = @source
+        body["source"] = "k8"
+        body["index"] = @index
+        body["host"] = @event_host
+        body["log"] = event
+        send_to_novasplunk(body.to_json)
+      }
+    end
 
     def send_to_novasplunk(body)
         log.debug "splunknova: " + body + "\n"
@@ -98,6 +98,8 @@ module Fluent
         res = http.request(req)
         log.debug "splunkhec: response HTTP Status Code is #{res.code}"
         if res.code.to_i != 200
+          log.warn "Error from Splunknova: " + res.body + "\n"
+          log.warn "Body sent to Splunknova: " + body + "\n"
           body = JSON.parse(res.body)
           raise SplunkNovaOutputError.new(body['text'], body['code'], body['invalid-event-number'], res.code)
         end

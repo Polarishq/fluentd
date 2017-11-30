@@ -20,7 +20,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: fluentd
-        image: splunknova-kubernetes-daemonset
+        image: splunknova-kubernetes-daemonset:v3
         env:
           - name:  SPLUNK_URL
             value: 'https://api-bbourbie.splunknovadev.com:443'
