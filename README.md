@@ -30,7 +30,7 @@ The Splunk URL.
 Then Splunk format (nova default) (not used yet)
 
 
-##config: splunk_token
+## config: splunk_token
 
 The Splunk token (YOUR BASE64 ENCODED API KEYS)
 
@@ -41,7 +41,7 @@ The Splunk entry point (/services/collector/event by default)
 
 
 
-##how to setup k8 fluentd nova daemonset plugin.
+## how to setup k8 fluentd nova daemonset plugin.
 
 I would assume that the user knows how to setup a kubernetes server otherwise one can look at kubernetes tutorial with a minikube.
 Also, it is necessary to have access to the docker hub repo polarishq/fluentd_splunknova.
@@ -61,7 +61,7 @@ Then, you need to create the daemonset by running the command
 kubectl create -f fluentd-daemonset-splunknova.yaml
 ```
 
-##how to create the image polarishq/fluentd_splunknova
+## how to create the image polarishq/fluentd_splunknova
 
 ```Bash
 docker build -t polarishq/fluentd_splunknova k8_image/good_image
