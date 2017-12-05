@@ -23,9 +23,9 @@ spec:
         image: polarishq/fluentd_splunknova
         env:
           - name:  SPLUNK_URL
-            value: 'https://api-bbourbie.splunknovadev.com:443'
+            value: 'https://api.splunknova.com:443'
           - name:  SPLUNK_TOKEN
-            value: "QlA0YjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0JreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSg=="
+            value: "<YOUR BASE64 ENCODED API KEY>=="
           - name: SPLUNK_FORMAT
             value: "nova"
           - name: SPLUNK_URL_PATH
