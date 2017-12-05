@@ -74,33 +74,34 @@ To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial
 1. Clone or download
 
   ```
-  git@github.com:Polarishq/nova_fluentd_plugin.git
+  git@github.com:splunknova/fluentd.git
   ```
 
-2. To configure the k8 fluentd nova deamonset plugin, open the file [fluentd-daemonset-splunknova.yaml](k8_image/fluentd-daemonset-splunknova.yaml)
+2. To configure the k8 fluentd nova deamonset plugin, open the file [k8_image/fluentd-daemonset-splunknova.yaml](k8_image/fluentd-daemonset-splunknova.yaml)
 
 2. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys: Your Splunk api-username and Base-64 Encoded token. Save and close the file.
 
   ```yaml
   - name:  SPLUNK_URL
-  value: 'https://api-username.splunknovadev.com:443'
+  value: 'https://api.splunknova.com:443'
   - name:  SPLUNK_TOKEN
-  value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
+  value: "<YOUR BASE64 Encoded API KEY>=="
   ```
 
 3. From the command line, create a daemonset by running:
 
   ```Bash
+    cd fluentd/k8_image
     kubectl create -f fluentd-daemonset-splunknova.yaml
 ```
 
 ### Create a docker image
 To create a snapshot of your k8 fluentd container, you may choose to create a docker image. Images are created with the build command, and they'll produce a container when started with the `run` command. Images are stored in a Docker registry such as https://hub.docker.com/.
 
-From within the terminal, change directories into the   `polarishq/fluentd_splunknova` repo, and run:
+From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
 ```Bash
-docker build -t polarishq/fluentd_splunknova k8_image/good_image
+docker build -t splunknova/fluentd k8_image/docker_image
 ```
 
 [bundler]: http://bundler.io/
