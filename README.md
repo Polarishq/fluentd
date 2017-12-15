@@ -31,8 +31,8 @@ gem install bundler
 
 To configure the fluentd plugin, you'll need to configure the following values:
 
-* **splunk_url:** The Splunk Nova url `splunknovadev.com` prefixed with your `api-username`
-* **splunk_token:** The Splunk token (Your Splunk Nova API Keys)
+* **splunk_url:** The Splunk Nova url `https://api.splunknova.com` prefixed with your `api-username`
+* **splunk_token:** The Splunk token is your Splunk Nova API Key
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default
 
@@ -97,7 +97,7 @@ docker build -t polarishq/fluentd_splunknova k8_image/good_image
 Check out [CONTRIBUTING.md](CONTRIBUTING.md) to submit pull requests via GitHub.
 
 [bundler]: http://bundler.io/
-[contributing]: https://www.splunknova.com/contributing.md
+[contributing]: https://github.com/splunknova/fluentd/Contributing.md
 [dhub]: https://hub.docker.com/
 [dockerkub]: https://www.docker.com/kubernetes
 [fluentd]: https://www.fluentd.org/
