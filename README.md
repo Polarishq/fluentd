@@ -29,14 +29,14 @@ gem install bundler
 
 ## Configure in Ruby
 
-To configure the fluentd plugin, you'll need to configure the following values:
+To configure the fluentd plugin, you'll need to modify the following values:
 
 * **splunk_url:** The Splunk Nova url `https://api.splunknova.com` prefixed with your `api-username`
-* **splunk_token:** The Splunk token is your Splunk Nova API Key
+* **splunk_token:** The Splunk token is your Base-64 encoded Nova API Key
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default
 
-open the `out_splunknova.rb` file and modify the `splunk_url` and `splunk_token` values using your Splunk Nova api-username and Base-64 Encoded token. Save and close the file.
+open the `out_splunknova.rb` file and modify the `splunk_url` and `splunk_token` values using your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
 
 ```
 config_param :splunk_url,       :string,   :default => 'https://api.splunknova.com'
@@ -68,7 +68,7 @@ To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial
 
 2. To configure the k8 fluentd nova deamonset plugin, open the file [fluentd-daemonset-splunknova.yaml](k8_image/fluentd-daemonset-splunknova.yaml)
 
-3. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys: Your Splunk api-username and Base-64 Encoded token. Save and close the file.
+3. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys: Your Splunk api-username and Base-64 encoded token. Save and close the file.
 
   ```yaml
   - name:  SPLUNK_URL
