@@ -86,10 +86,10 @@ To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial
 ### Create a docker image
 To create a snapshot of your k8 fluentd container, you may choose to create a docker image. Images are created with the build command, and they'll produce a container when started with the `run` command. Images are stored in a Docker registry such as https://hub.docker.com/.
 
-From within the terminal, change directories into the   `polarishq/fluentd_splunknova` repo, and run:
+From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
 ```Bash
-docker build -t polarishq/fluentd_splunknova k8_image/good_image
+docker build -t splunknova/fluentd k8_image/good_image
 ```
 
 ## Contributing
