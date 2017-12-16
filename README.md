@@ -89,7 +89,7 @@ To create a snapshot of your k8 fluentd container, you may choose to create a do
 From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
 ```Bash
-docker build -t splunknova/fluentd k8_image/good_image
+docker build -t splunknova/fluentd k8_image/docker_image
 ```
 
 ## Contributing
