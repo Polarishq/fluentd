@@ -96,15 +96,9 @@ config_param :splunk_url_path,  :string,   :default => '/v1/events'
 
 ### Configure
 
-1. Clone or download
+1.  To configure the Kubernetes fluentd Splunk Nova deamonset plugin, open the file [fluentd-daemonset-splunknova.yaml](k8_image/fluentd-daemonset-splunknova.yaml)
 
-  ```
-  git@github.com:Polarishq/nova_fluentd_plugin.git
-  ```
-
-2. To configure the k8 fluentd nova deamonset plugin, open the file [fluentd-daemonset-splunknova.yaml](k8_image/fluentd-daemonset-splunknova.yaml)
-
-3. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys: Your Splunk api-username and Base-64 encoded token. Save and close the file.
+2. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
 
   ```yaml
   - name:  SPLUNK_URL
@@ -113,21 +107,23 @@ config_param :splunk_url_path,  :string,   :default => '/v1/events'
   value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
   ```
 
-4. From the command line, create a daemonset by running:
+3. Save and close the file.
 
-  ```Bash
+4. From the command line,change directories into the   `splunknova/fluentd` repo, and create a daemonset by running:
+
+    ```Bash
     kubectl create -f fluentd-daemonset-splunknova.yaml
-```
+    ```
 
 ### Create a docker image
 
-To create a snapshot of your k8 fluentd container, you may choose to create a docker image. Images are created with the build command, and they'll produce a container when started with the `run` command. Images are stored in a Docker registry such as https://hub.docker.com/.
+To create a snapshot of your k8 fluentd container, you may choose to create a docker image. Docker images are created with the build command, and produce a container when started with the `run` command. Images are stored in a Docker registry: https://hub.docker.com/.
 
 From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
-```Bash
-docker build -t splunknova/fluentd k8_image/docker_image
-```
+    ```Bash
+    docker build -t splunknova/fluentd k8_image/docker_image
+    ```
 
 ## Contribute
 
