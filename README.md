@@ -24,9 +24,7 @@ Works best on macOS and Linux.
 
 ## Install
 
-Works best with macOS and Linux
-
-#### macOS
+### macOS
 
 1. Clone or download the Splunk Nova Fluentd plugin.
     ```bash
@@ -41,12 +39,13 @@ Works best with macOS and Linux
    ```bash
    gem install bundler
    ```
-4.    You're now ready to configure Splunk Nova with your API credentials.
+4. You're now ready to configure Splunk Nova with your API credentials.
 
 ### Configure
 
-1. Configure your  `out_splunknova.rb` file by navigating to`lib` > `fluent` > `plugin `directory.
-2. Open the `out_splunknova.rb` file and To configure the fluentd plugin, edit the following values sing your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
+1. Configure your  `out_splunknova.rb` file by navigating to the plugin directory: `lib` > `fluent` > `plugin `directory.
+2. Open the `out_splunknova.rb` file.
+3. To configure the fluentd plugin, edit the following values using your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
 
 **Sample**
 * **splunk_url:** The Splunk Nova url `https://api.splunknova.com` prefixed with your `api-username`
@@ -63,28 +62,7 @@ config_param :splunk_url_path,  :string,   :default => '/v1/events'
 ```
 
 
-## Fluentd plugin with Splunk Nova and Kubernetes using Docker
-
-1. Create/replace the contents of your `Gemfile` with the following:
-
-   ```ruby
-   source "https://rubygems.org"
-
-   gem "github-pages", group: :jekyll_plugins
-   ```
-
-2. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
-
-   ```bash
-   bundle
-   ```
-
-## Usage
-
-For detailed instructions on how to configure, customize, and more read the [documentation]
-
-
-## Setup K8 fluentd nova daemonset plugin
+## Fluentd plugin with Splunk Nova and Kubernetes (ks8) using Docker
 
 [Kubernetes], is an open source orchestration framework for containerized applications. The [Docker platform][dockerkub] supports Kubernetes. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
 
@@ -92,10 +70,29 @@ For detailed instructions on how to configure, customize, and more read the [doc
 
 - Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
 - Your Splunk Nova API Keys from [Splunk Nova][nova]
-- A kubernetes server.
+- A Kubernetes server.
 
-### Setup
-To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
+## Install
+
+### macOS
+
+1. Clone or download the Splunk Nova Fluentd plugin.
+    ```bash
+    git@github.com:Polarishq/nova_fluentd_plugin.git
+    ```
+2. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
+
+   ```bash
+   brew install ruby
+   ```
+3. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+   ```bash
+   gem install bundler
+   ```
+4. You're now ready to configure Splunk Nova with your API credentials.
+
+
+5. To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
 
 ### Configure
 
@@ -123,6 +120,7 @@ To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial
 ```
 
 ### Create a docker image
+
 To create a snapshot of your k8 fluentd container, you may choose to create a docker image. Images are created with the build command, and they'll produce a container when started with the `run` command. Images are stored in a Docker registry such as https://hub.docker.com/.
 
 From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
