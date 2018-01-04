@@ -1,43 +1,100 @@
-# splunknova fluentd plugin
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-A Splunk Nova [fluentd] plugin to send events to [Splunk HTTP Event Collector (HEC)][hec] or [Splunk Nova][nova].
+		- [What it is](#what-it-is)
+		- [What it does](#what-it-does)
+		- [Why use it?](#why-use-it)
+	- [Fluentd plugin with Splunk Nova](#fluentd-plugin-with-splunk-nova)
+		- [Prerequisities](#prerequisities)
+	- [Install](#install)
+			- [macOS](#macos)
+		- [Configure](#configure)
+	- [Fluentd plugin with Splunk Nova and Kubernetes using Docker](#fluentd-plugin-with-splunk-nova-and-kubernetes-using-docker)
+	- [Usage](#usage)
+	- [Setup K8 fluentd nova daemonset plugin](#setup-k8-fluentd-nova-daemonset-plugin)
+		- [Prerequisities](#prerequisities)
+		- [Setup](#setup)
+		- [Configure](#configure)
+		- [Create a docker image](#create-a-docker-image)
+	- [Contribute](#contribute)
+		- [Test](#test)
+		- [Pull Requests](#pull-requests)
 
-## What it does
+<!-- /TOC -->
 
-Fluentd is an open source data collector which lets you unify data collection and consumption. HEC enables you to send data over HTTP or HTTPS directly from your application to Splunk Enterprise or Splunk Cloud. Splunk Nova Cloud APIs help you quickly collect your logs and metrics to make sense of data points in your apps and infrastructure.
+### What it is
 
-### Prerequisities
+Splunk Nova provide cloud APIs for logging and analyzing your app. Fluentd is an open source data collector that decouples data sources from backend systems by providing a unified logging layer in between. This layer allows developers and data analysts to utilize many types of logs as they are generated and send them directly to Splunk Nova.
 
-- [bundler]
-- [fluentd]
-- [Homebrew]
-- [Ruby]
-- [Splunk HTTP Event Collector (HEC)][hec]
-- [Splunk Nova][nova]
+### What it does
 
-## Install
+Splunk Nova Cloud APIs with the fluentd plugin help you quickly collect your logs, events, and metrics to make sense of data points in your apps and infrastructure.
+
+### Why use it?
+
+There are a couple of different ways to use the Splunk Nova fluentd plugin. You can use it with Splunk Nova to do this thing, or you can add a Minikube and use it with Kubernetes to do this other thing.
+
+## Fluentd plugin with Splunk Nova
 
 Works best on macOS and Linux.
 
-### macOS
-To install the fluentd splunknova plugin locally, we recommend using [homebrew] and [ruby]. Once the dependencies are installed, from the command line run:
+### Prerequisities
 
-```
-brew install ruby
-gem install bundler
-```
+-   [bundler]
+-   [fluentd]
+-   [Homebrew]
+-   [Ruby]
+  - [Splunk Nova][nova]
 
-## Configure in Ruby
+## Install
 
-To configure the fluentd plugin, you'll need to modify the following values:
+Works best with macOS and Linux
+
+#### macOS
+
+1. Clone or download the Splunk Nova Fluentd plugin.
+    ```bash
+    git@github.com:Polarishq/nova_fluentd_plugin.git
+    ```
+2. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
+
+   ```bash
+   brew install ruby
+   ```
+3. Install the `bundler` gem:
+   ```bash
+   gem install bundler
+   ```
+   You're now ready to configure Splunk Nova with your API credentials.
+
+2. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+
+    ```bash
+      gem install bundler
+      ```
+
+3. Set the `theme` in your project's  `_config.yml` file:
+
+   ```yaml
+
+   ```
+
+To update the theme run `bundle update`.
+
+
+
+### Configure
+
+1. Access the `out_splunknova.rb` file by navigating to`lib` > `fluent` > `plugin `directory.
+2. Open the `out_splunknova.rb` file and modify the `splunk_url` and `splunk_token` values using your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
+
+To configure the fluentd plugin, edit the following values:
 
 * **splunk_url:** The Splunk Nova url `https://api.splunknova.com` prefixed with your `api-username`
 * **splunk_token:** The Splunk token is your Base-64 encoded Nova API Key
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default
 
-open the `out_splunknova.rb` file and modify the `splunk_url` and `splunk_token` values using your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
-
+Example
 ```
 config_param :splunk_url,       :string,   :default => 'https://api.splunknova.com'
 config_param :splunk_token,     :string    :default => 'QmFzZS02NCBFbmNvZGVkIFNwbHVuayBOb3ZhIEFQSSBLZXk='
@@ -45,9 +102,31 @@ config_param :splunk_format,    :string,   :default => 'nova'
 config_param :splunk_url_path,  :string,   :default => '/v1/events'
 ```
 
+
+## Fluentd plugin with Splunk Nova and Kubernetes using Docker
+
+1. Create/replace the contents of your `Gemfile` with the following:
+
+   ```ruby
+   source "https://rubygems.org"
+
+   gem "github-pages", group: :jekyll_plugins
+   ```
+
+2. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+
+   ```bash
+   bundle
+   ```
+
+## Usage
+
+For detailed instructions on how to configure, customize, and more read the [documentation]
+
+
 ## Setup K8 fluentd nova daemonset plugin
 
-[Kubernetes], also called K8 or K8S (K–eight characters–S), is an open source orchestration framework for containerized applications. The [Docker platform][dockerkub] supports Kubernetes.
+[Kubernetes], is an open source orchestration framework for containerized applications. The [Docker platform][dockerkub] supports Kubernetes. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
 
 ### Prerequisities
 
@@ -92,16 +171,39 @@ From within the terminal, change directories into the   `splunknova/fluentd` rep
 docker build -t splunknova/fluentd k8_image/docker_image
 ```
 
-## Contributing
+## Contribute
 
-Check out [CONTRIBUTING.md](CONTRIBUTING.md) to submit pull requests via GitHub.
+Having trouble working with the plugin? Found a typo in the documentation? Interested in adding a feature or [fixing a bug](https://github.com/splunknova/fluentd/issues)? Then [submit an issue](https://github.com/https://github.com/splunknova/fluentd/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/).
+
+Contributing is a great way to learn more about new technologies and how to create helpful bug reports, feature requests and a good, clean pull request.
+
+### Test
+
+To set up your environment to develop this plugin, you'll first need to run tests.
+
+1. Install the related libraries:
+
+```
+$ bundle install --path vendor/bundle
+$ bundle exec rake test
+```
+
+2. Test the plugin, run `bundle exec rake preview` and open your browser at `http://localhost:0000/test/`.
+
+This starts a server using the in the `test_out_splunknova.rb` directory. As modifications are made to the plugin and test site, it will regenerate and you should see the changes in the browser after a refresh.
+
+### Pull Requests
+
+When submitting a pull request:
+
+1. Clone the repo.
+2. Create a branch off of `master` and give it a meaningful name (e.g. `my-new-feature`).
+3. Open a pull request on GitHub and describe the feature or fix.
 
 [bundler]: http://bundler.io/
-[contributing]: https://github.com/splunknova/fluentd/Contributing.md
 [dhub]: https://hub.docker.com/
 [dockerkub]: https://www.docker.com/kubernetes
 [fluentd]: https://www.fluentd.org/
-[hec]: http://dev.splunk.com/view/event-collector/SP-CAAAE6M
 [hello]: https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/
 [homebrew]: https://brew.sh/
 [kubernetes]: https://kubernetes.io/
