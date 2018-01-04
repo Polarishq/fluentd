@@ -1,26 +1,3 @@
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-		- [What it is](#what-it-is)
-		- [What it does](#what-it-does)
-		- [Why use it?](#why-use-it)
-	- [Fluentd plugin with Splunk Nova](#fluentd-plugin-with-splunk-nova)
-		- [Prerequisities](#prerequisities)
-	- [Install](#install)
-			- [macOS](#macos)
-		- [Configure](#configure)
-	- [Fluentd plugin with Splunk Nova and Kubernetes using Docker](#fluentd-plugin-with-splunk-nova-and-kubernetes-using-docker)
-	- [Usage](#usage)
-	- [Setup K8 fluentd nova daemonset plugin](#setup-k8-fluentd-nova-daemonset-plugin)
-		- [Prerequisities](#prerequisities)
-		- [Setup](#setup)
-		- [Configure](#configure)
-		- [Create a docker image](#create-a-docker-image)
-	- [Contribute](#contribute)
-		- [Test](#test)
-		- [Pull Requests](#pull-requests)
-
-<!-- /TOC -->
-
 ### What it is
 
 Splunk Nova provide cloud APIs for logging and analyzing your app. Fluentd is an open source data collector that decouples data sources from backend systems by providing a unified logging layer in between. This layer allows developers and data analysts to utilize many types of logs as they are generated and send them directly to Splunk Nova.
@@ -60,41 +37,24 @@ Works best with macOS and Linux
    ```bash
    brew install ruby
    ```
-3. Install the `bundler` gem:
+3. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
    ```bash
    gem install bundler
    ```
-   You're now ready to configure Splunk Nova with your API credentials.
-
-2. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
-
-    ```bash
-      gem install bundler
-      ```
-
-3. Set the `theme` in your project's  `_config.yml` file:
-
-   ```yaml
-
-   ```
-
-To update the theme run `bundle update`.
-
-
+4.    You're now ready to configure Splunk Nova with your API credentials.
 
 ### Configure
 
-1. Access the `out_splunknova.rb` file by navigating to`lib` > `fluent` > `plugin `directory.
-2. Open the `out_splunknova.rb` file and modify the `splunk_url` and `splunk_token` values using your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
+1. Configure your  `out_splunknova.rb` file by navigating to`lib` > `fluent` > `plugin `directory.
+2. Open the `out_splunknova.rb` file and To configure the fluentd plugin, edit the following values sing your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
 
-To configure the fluentd plugin, edit the following values:
-
+**Sample**
 * **splunk_url:** The Splunk Nova url `https://api.splunknova.com` prefixed with your `api-username`
 * **splunk_token:** The Splunk token is your Base-64 encoded Nova API Key
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default
 
-Example
+**Example**
 ```
 config_param :splunk_url,       :string,   :default => 'https://api.splunknova.com'
 config_param :splunk_token,     :string    :default => 'QmFzZS02NCBFbmNvZGVkIFNwbHVuayBOb3ZhIEFQSSBLZXk='
