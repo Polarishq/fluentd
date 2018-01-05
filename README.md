@@ -87,12 +87,9 @@ Profit!
 
 ## Use the Splunk Nova Fluentd plugin with Kubernetes (K8s) and Docker
 
-The [Docker platform][dockerkub] supports Kubernetes. This means that developers can build test and deploy containerized apps with Docker. Docker Swarm provides native clustering functionality for Docker containers, which turns a group of Docker engines into a single, virtual Docker engine.
-
 [Kubernetes], is an open source framework that helps to orchestrate and automate container deployments, such as a Docker Swarm. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
 
-A [daemonset] is a K8s concept that is automatically deployed on each node of a K8s cluster.  A Fluentd data pipeline is running in the daemonset that ingests system and application logs and send these data to Splunk Nova.
-The daemonset is running as a a docker image container.
+A [daemonset] is a K8s concept that is automatically deployed on each node of a K8s cluster.  A Fluentd data pipeline is running in the daemonset that ingests system and application logs and send these data to Splunk Nova. The daemonset is running as a a docker image container.
 
 **Fluentd K8s Input**: The K8s plugin is a Fluentd input component that gets logs or pulls system metrics.
 
