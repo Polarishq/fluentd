@@ -14,7 +14,7 @@ Use the Splunk Nova Fluentd plugin to send events, logs, and metrics directly to
 
 **Use the Splunk Nova Fluentd plugin with Kubernetes (K8s) and Docker**
 
-The Fluentd data pipeline is runs a K8s daemonset that ingests system and application events, logs, and metrics across containers and send these data to Splunk Nova. The orchestrated daemonset runs as a a docker image container.
+The Fluentd data pipeline runs a K8s daemonset that ingests system and application events, logs, and metrics across containers and send these data to Splunk Nova. The orchestrated daemonset runs as a a docker image container.
 
 ## Use the Fluentd plugin with Splunk Nova
 
