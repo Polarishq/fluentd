@@ -34,7 +34,7 @@ Works best on macOS and Linux.
 
 1. Clone or download the Splunk Nova Fluentd plugin.
     ```bash
-    git@github.com:Polarishq/nova_fluentd_plugin.git
+    git@github.com:splunknova/fluentd.git
     ```
 2. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
 
@@ -112,7 +112,7 @@ The daemonset is running as a a docker image container.
 
 1. Clone or download the Splunk Nova Fluentd plugin.
     ```bash
-    git@github.com:Polarishq/nova_fluentd_plugin.git
+    git@github.com:splunknova/fluentd.git
     ```
 2. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
 
