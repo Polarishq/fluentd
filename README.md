@@ -16,11 +16,11 @@ Works best on macOS and Linux.
 
 ### Prerequisities
 
--   [bundler]
--   [fluentd]
+-   [Bundler]
+-   [Fluentd]
 -   [Homebrew]
 -   [Ruby]
--   [Splunk Nova][nova]
+-   [Splunk Nova][nova] API Keys
 
 ## Install
 
@@ -56,6 +56,7 @@ You're now ready to configure the Fluentd plugin with your Splunk Nova API crede
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default (<--this OR v1/events?)
 
+
 **Example**
 ```
 config_param :splunk_url,       :string,   :default => 'https://user-name?api.splunknova.com'
@@ -64,20 +65,35 @@ config_param :splunk_format,    :string,   :default => 'nova'
 config_param :splunk_url_path,  :string,   :default => '/v1/events'
 ```
 
+Verify that fluentd is configured to communicate with Splunk Nova:
+
+```
+Run verify command here
+```
+
+Expected output:
+
+```
+Huzzah,it's working!
+```
+
+Profit!
 
 ## Fluentd plugin with Splunk Nova and Kubernetes (ks8) using Docker
 
-[Kubernetes], is an open source orchestration framework for containerized applications. The [Docker platform][dockerkub] supports Kubernetes. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
+[Kubernetes], is an open source framework that helps to orchestrate and automate container deployments. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
+
+The [Docker platform][dockerkub] supports Kubernetes. This means that developers can build apps with Docker and seamlessly test and deploy them in both Docker Community Edition or Docker Enterprise Edition.
 
 ### Prerequisities
 
-- Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
-- Your Splunk Nova API Keys from [Splunk Nova][nova]
-- A Kubernetes server.
+-   Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
+-   [Splunk Nova][nova] API Keys
+-   A Kubernetes server.
 
 ## Install
 
-### macOS
+### macOS with Homebrew
 
 1. Clone or download the Splunk Nova Fluentd plugin.
     ```bash
@@ -94,8 +110,6 @@ config_param :splunk_url_path,  :string,   :default => '/v1/events'
    ```
 4. You're now ready to configure Splunk Nova with your API credentials.
 
-
-5. To setup a kubernetes server, see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
 
 ### Configure
 
@@ -128,28 +142,40 @@ From within the terminal, change directories into the   `splunknova/fluentd` rep
     docker build -t splunknova/fluentd k8_image/docker_image
     ```
 
+### Create a Kubernetes cluster
+
+#### Local cluster
+
+To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
+
+#### Production cluster
+
+To setup a production grade Kubernetes cluster, see [kops].
+
 ## Contribute
 
 Having trouble working with the plugin? Found a typo in the documentation? Interested in adding a feature or [fixing a bug](https://github.com/splunknova/fluentd/issues)? Then [submit an issue](https://github.com/https://github.com/splunknova/fluentd/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/).
 
 Contributing is a great way to learn more about new technologies and how to create helpful bug reports, feature requests and a good, clean pull request.
 
-### Test
+#### Test
 
 To set up your environment to develop this plugin, you'll first need to run tests.
 
 1. Install the related libraries:
 
-```
-$ bundle install --path vendor/bundle
-$ bundle exec rake test
-```
+   ```
+   bundle install --path vendor/bundle
+   ```
+   ```
+   bundle exec rake test
+   ```
 
 2. Test the plugin, run `bundle exec rake preview` and open your browser at `http://localhost:0000/test/`.
 
 This starts a server using the in the `test_out_splunknova.rb` directory. As modifications are made to the plugin and test site, it will regenerate and you should see the changes in the browser after a refresh.
 
-### Pull Requests
+#### Pull Requests
 
 When submitting a pull request:
 
@@ -164,6 +190,7 @@ When submitting a pull request:
 [fluentd]: https://www.fluentd.org/
 [hello]: https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/
 [homebrew]: https://brew.sh/
+[kops]: https://github.com/kubernetes/kops
 [kubernetes]: https://kubernetes.io/
 [minikube]: https://kubernetes.io/docs/getting-started-guides/minikube/
 [nova]: https://www.splunknova.com/
