@@ -20,7 +20,7 @@ Works best on macOS and Linux.
 -   [fluentd]
 -   [Homebrew]
 -   [Ruby]
-  - [Splunk Nova][nova]
+-   [Splunk Nova][nova]
 
 ## Install
 
@@ -39,23 +39,26 @@ Works best on macOS and Linux.
    ```bash
    gem install bundler
    ```
-4. You're now ready to configure Splunk Nova with your API credentials.
+4. Sign up or Log in to [Splunk Nova][nova] which generates your API credentials.
+
+You're now ready to configure the Fluentd plugin with your Splunk Nova API credentials.
 
 ### Configure
 
 1. Configure your  `out_splunknova.rb` file by navigating to the plugin directory: `lib` > `fluent` > `plugin `directory.
-2. Open the `out_splunknova.rb` file.
-3. To configure the fluentd plugin, edit the following values using your Splunk Nova api-username and Base-64 encoded token. Save and close the file.
+2. Login to Splunk Nova and grab your [API Keys][apikeys].
+3. Open the `out_splunknova.rb` file.
+4. Configure the fluentd plugin, by edit the following values using your Splunk Nova `api-username` and Base-64 encoded token. Save and close the file.
 
 **Sample**
 * **splunk_url:** The Splunk Nova url `https://api.splunknova.com` prefixed with your `api-username`
 * **splunk_token:** The Splunk token is your Base-64 encoded Nova API Key
 * **splunk_format:** Then Splunk format `nova` by default
-* **splunk_url_path:** The Splunk entry point `/services/collector/event` by default
+* **splunk_url_path:** The Splunk entry point `/services/collector/event` by default (<--this OR v1/events?)
 
 **Example**
 ```
-config_param :splunk_url,       :string,   :default => 'https://api.splunknova.com'
+config_param :splunk_url,       :string,   :default => 'https://user-name?api.splunknova.com'
 config_param :splunk_token,     :string    :default => 'QmFzZS02NCBFbmNvZGVkIFNwbHVuayBOb3ZhIEFQSSBLZXk='
 config_param :splunk_format,    :string,   :default => 'nova'
 config_param :splunk_url_path,  :string,   :default => '/v1/events'
@@ -154,6 +157,7 @@ When submitting a pull request:
 2. Create a branch off of `master` and give it a meaningful name (e.g. `my-new-feature`).
 3. Open a pull request on GitHub and describe the feature or fix.
 
+[apikeys]: https://www.splunknova.com/apikeys
 [bundler]: http://bundler.io/
 [dhub]: https://hub.docker.com/
 [dockerkub]: https://www.docker.com/kubernetes
