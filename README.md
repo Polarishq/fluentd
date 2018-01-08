@@ -106,12 +106,12 @@ Support for multi line events.
 -   Delivering host specific logs allows us to monitor components of a cluster.
 -   Log collection uses JSON logging driver.
 -   Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
--
+
 ### Prerequisities
 
--   Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
 -   [Splunk Nova][nova] API Keys
-- `kubectl` is required, see [Install and Set Up kubectl](http://kubernetes.io/docs/user-guide/prereqs/).
+-   Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
+-   `kubectl` is required, see [Install and Set Up kubectl](http://kubernetes.io/docs/user-guide/prereqs/).
 
 ## Install
 
@@ -140,30 +140,30 @@ To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes
 
 To setup a production grade Kubernetes cluster, see [kops].
 
-4. You're now ready to configure Splunk Nova with your API credentials.
+You're now ready to configure Splunk Nova with your API credentials.
 
 ### Configure
 
 1.  To configure the Kubernetes fluentd Splunk Nova daemonset plugin, open the file: `fluentd-daemonset-splunknova.yaml`
 
-2. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
+2.  Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
 
-  ```yaml
-  - name:  SPLUNK_URL
-  value: 'https://api.splunknova.com:443'
-  - name:  SPLUNK_TOKEN
-  value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
-  ```
+    ```yaml
+    - name:  SPLUNK_URL
+    value: 'https://api.splunknova.com:443'
+    - name:  SPLUNK_TOKEN
+    value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
+    ```
 
-3. Save and close the file.
+3.  Save and close the file.
 
-4. From the command line,change directories into the   `splunknova/fluentd` repo, and create a daemonset by running:
+4.  From the command line,change directories into the `splunknova/fluentd` repo. Create a daemonset by running:
 
-   ```bash
-   kubectl create -f fluentd-daemonset-splunknova.yaml
-   ```
+     ```bash
+     kubectl create -f fluentd-daemonset-splunknova.yaml
+     ```
 
-5. Start monitoring your Kubernetes cluster.
+5.  Start monitoring your Kubernetes cluster.
 
 ### Create a docker image
 
