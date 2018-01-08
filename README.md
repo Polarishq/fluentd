@@ -111,7 +111,7 @@ Support for multi line events.
 
 -   Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
 -   [Splunk Nova][nova] API Keys
--   A Kubernetes server.
+- `kubectl` is required, see [Install and Set Up kubectl](http://kubernetes.io/docs/user-guide/prereqs/).
 
 ## Install
 
@@ -130,8 +130,17 @@ Support for multi line events.
    ```bash
    gem install bundler
    ```
-4. You're now ready to configure Splunk Nova with your API credentials.
+### Create a Kubernetes cluster
 
+#### Local cluster
+
+To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
+
+#### Production cluster
+
+To setup a production grade Kubernetes cluster, see [kops].
+
+4. You're now ready to configure Splunk Nova with your API credentials.
 
 ### Configure
 
@@ -166,16 +175,6 @@ From within the terminal, change directories into the   `splunknova/fluentd` rep
     docker build -t splunknova/fluentd k8_image/docker_image
     ```
 
-### Create a Kubernetes cluster
-
-#### Local cluster
-
-To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
-
-#### Production cluster
-
-To setup a production grade Kubernetes cluster, see [kops].
-
 ## Additional Resources
 
 -   [K8s Logging architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
@@ -185,39 +184,11 @@ To setup a production grade Kubernetes cluster, see [kops].
 
 ## Contribute
 
-Having trouble working with the plugin? Found a typo in the documentation? Interested in adding a feature or [fixing a bug](https://github.com/splunknova/fluentd/issues)? Then [submit an issue](https://github.com/splunknova/fluentd/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/).
-
-Contributing is a great way to learn more about new technologies and how to create helpful bug reports, feature requests and a good, clean pull request.
-
-#### Test
-
-To set up your environment to develop this plugin, you'll first need to run tests.
-
-1. Install the related libraries:
-
-   ```
-   bundle install --path vendor/bundle
-   ```
-2. Run the tests:
-   ```
-   bundle exec rake test
-   ```
-This starts a server using the in the `test_out_splunknova.rb` directory.
-
-3. Open your browser and verify `http://localhost:0000/test/`.
-
-As modifications are made to the plugin and test site, it will regenerate and you should see the changes in the browser after a refresh.
-
-#### Pull Requests
-
-When submitting a pull request:
-
-1. Clone the repo.
-2. Create a branch off of `master` and give it a meaningful name (e.g. `my-new-feature`).
-3. Open a pull request on GitHub and describe the feature or fix.
+See review the guidelines for [contributing] to this repository.
 
 [apikeys]: https://www.splunknova.com/apikeys
 [bundler]: http://bundler.io/
+[contributing]: https://github.com/splunknova/fluentd/blob/master/Contributing.md
 [daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
 [dhub]: https://hub.docker.com/
 [dockerkub]: https://www.docker.com/kubernetes
