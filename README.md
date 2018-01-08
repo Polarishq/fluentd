@@ -57,15 +57,15 @@ You're now ready to configure the Fluentd plugin with your Splunk Nova API crede
 4. Configure the fluentd plugin, by editing the following values using your Splunk Nova `api-username` and `Base-64 encoded token`. Save and close the file.
 
 **Sample**
-* **splunk_url:** The Splunk Nova url `https://api.splunknova.com`.
+* **splunk_url:** The Splunk Nova url `https://api.splunknova.com:443`.
 * **splunk_token:** The Splunk token is your Base-64 encoded Nova API Key
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default (<--this OR `v1/events`?)
 
 
 **Example**
-```
-config_param :splunk_url,       :string,   :default => 'api.splunknova.com'
+```ruby
+config_param :splunk_url,       :string,   :default => 'api.splunknova.com:443'
 config_param :splunk_token,     :string    :default => 'QmFzZS02NCBFbmNvZGVkIFNwbHVuayBOb3ZhIEFQSSBLZXk='
 config_param :splunk_format,    :string,   :default => 'nova'
 config_param :splunk_url_path,  :string,   :default => '/v1/events'
@@ -93,10 +93,20 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 
 **Fluentd K8s Input**: The K8s plugin is a Fluentd input component that gets logs or pulls system metrics.
 
-**Splunk Nova Output**: The Splunk Nova plugin is a Fluentd output component that send ingested data to Splunk Nova.
+**Splunk Nova Output**: The Splunk Nova plugin is a Fluentd output component that sends ingested data to Splunk Nova.
 
 **K8s Add-on** (optional): K8s add-on are responsible for managing/config the daemonset through K8s API knowledge objects such asfield extraction, monitor dash board, etc.
 
+**Features:**
+
+Uses Splunk Nova to ingest data.
+Support for multi line events.
+
+-   Collect events and stats, allows you to correlate logs with metrics.
+-   Delivering host specific logs allows us to monitor components of a cluster.
+-   Log collection uses JSON logging driver.
+-   Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
+-
 ### Prerequisities
 
 -   Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
@@ -131,7 +141,7 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 
   ```yaml
   - name:  SPLUNK_URL
-  value: 'https://api.splunknova.com'
+  value: 'https://api.splunknova.com:443'
   - name:  SPLUNK_TOKEN
   value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
   ```
@@ -140,9 +150,11 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 
 4. From the command line,change directories into the   `splunknova/fluentd` repo, and create a daemonset by running:
 
-    ```
-    kubectl create -f fluentd-daemonset-splunknova.yaml
-    ```
+   ```bash
+   kubectl create -f fluentd-daemonset-splunknova.yaml
+   ```
+
+5. Start monitoring your Kubernetes cluster.
 
 ### Create a docker image
 
