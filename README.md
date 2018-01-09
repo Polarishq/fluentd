@@ -136,12 +136,6 @@ Support for multi line events.
 
 To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes tutorial with [Minikube].
 
-#### Production cluster
-
-To setup a production grade Kubernetes cluster, see [kops].
-
-You're now ready to configure Splunk Nova with your API credentials.
-
 ### Configure
 
 1.  To configure the Kubernetes fluentd Splunk Nova daemonset plugin, open the file: `fluentd-daemonset-splunknova.yaml`
