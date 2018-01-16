@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.email         = "bbourbie@splunk.com"
   gem.description   = %q{Output plugin for Nova.}
   gem.homepage      = "https://github.com/splunknova/fluentd"
-  gem.summary       = %q{This plugin allows you to sent events to Splunk Nova or Splunk.}
+  gem.summary       = %q{This plugin allows you to sent events to Splunk Nova or Splunk through fluentd.}
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

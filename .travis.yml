@@ -10,7 +10,7 @@ env:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install bash git sudo make gcc g++ libc-dev ruby-dev libffi-dev
+  - sudo apt-get -y --no-install-recommends install bash git sudo make gcc g++ libc-dev ruby-dev libffi-dev
 
 before_script:
 - echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin

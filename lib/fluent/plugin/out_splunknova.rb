@@ -10,7 +10,7 @@ module Fluent
 
       # Splunk Nova configuration parameters
       config_param :splunk_url,       :string,   :default => 'https://api.splunknova.com'
-      config_param :splunk_token,     :string    :default => 'NDlycjJ2MUZ3QWd2VzJVQkp4bTNBZ0dQRGZJYU5qT1I6NDFEN2lYWmYxRnBoLVFVdENNbHFqRFZrTTgxekkwVGczRDVtaDZZbU8yRWlaMGtydXl6NFhBaHAxbEpPV2I1eA=='
+      config_param :splunk_token,     :string,   :default => 'NDlycjJ2MUZ3QWd2VzJVQkp4bTNBZ0dQRGZJYU5qT1I6NDFEN2lYWmYxRnBoLVFVdENNbHFqRFZrTTgxekkwVGczRDVtaDZZbU8yRWlaMGtydXl6NFhBaHAxbEpPV2I1eA=='
       config_param :splunk_format,    :string,   :default => 'nova'
       config_param :splunk_url_path,  :string,   :default => '/v1/events'
 

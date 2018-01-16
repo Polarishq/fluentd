@@ -40,25 +40,27 @@ Works best on macOS and Linux.
     ```bash
     git@github.com:splunknova/fluentd.git
     ```
-2. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
+1. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
 
    ```bash
    brew install ruby
    ```
-3. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+
+1. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
    ```bash
    gem install bundler
    ```
-4. Sign up or Log in to [Splunk Nova][nova] which generates your API credentials.
+
+1. Sign up or Log in to [Splunk Nova][nova] which generates your API credentials.
 
 You're now ready to configure the Fluentd plugin with your Splunk Nova API credentials.
 
 ### Configure
 
-1. Configure your  `out_splunknova.rb` file by navigating to the plugin directory: `lib` > `fluent` > `plugin `directory.
-2. Login to Splunk Nova and grab your [API Keys][apikeys].
-3. Open the `out_splunknova.rb` file.
-4. Configure the fluentd plugin, by editing the following values using your Splunk Nova `api-username` and `Base-64 encoded token`. Save and close the file.
+1. Configure your  `out_splunknova.rb` file by navigating to the plugin directory: `lib` > `fluent` > `plugin` directory.
+1. Login to Splunk Nova and grab your [API Keys][apikeys].
+1. Open the `out_splunknova.rb` file.
+1. Configure the fluentd plugin, by editing the following values using your Splunk Nova `api-username` and `Base-64 encoded token`. Save and close the file.
 
 **Sample**
 * **splunk_url:** The Splunk Nova url `https://api.splunknova.com:443`.
@@ -130,10 +132,16 @@ Support for multi line events.
    ```bash
    brew install ruby
    ```
-1. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+1. Fetch the bundler [Bundler](http://bundler.io/) command:
    ```bash
    gem install bundler
    ```
+
+1. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+   ```bash
+   bundle install
+   ```
+
 ### Create a Kubernetes cluster
 
 #### Local cluster
