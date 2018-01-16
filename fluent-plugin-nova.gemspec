@@ -3,12 +3,12 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
-  gem.name          = "fluent-plugin-splunknova"
+  gem.name          = "fluent-plugin-nova"
   gem.version       = "0.1"
   gem.authors       = "Benoît Bourbié"
   gem.email         = "bbourbie@splunk.com"
-  gem.description   = %q{Output plugin for the Splunk HTTP Event Collector.}
-  gem.homepage      = "https://github.com/Polarishq/nova_flluentd_plugin"
+  gem.description   = %q{Output plugin for Nova.}
+  gem.homepage      = "https://github.com/splunknova/fluentd"
   gem.summary       = %q{This plugin allows you to sent events to Splunk Nova or Splunk.}
 
   gem.files         = `git ls-files`.split($\)
