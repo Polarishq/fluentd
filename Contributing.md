@@ -1,10 +1,18 @@
-Thanks! [Splunk Nova] wouldn't be what it is without your help. Thanks for contributing. Please make your contributions as pull requests via GitHub. See  [Creating a pull request][pr].
+# Contributing to Splunk Nova
 
-Having trouble working with the plugin? Found a typo in the documentation? Interested in adding a feature or [fixing a bug](https://github.com/splunknova/fluentd/issues)? Then [submit an issue](https://github.com/splunknova/fluentd/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/).
+Thanks! [Splunk Nova] wouldn't be what it is without your help. Thanks for contributing.
+Please make your contributions as pull requests via GitHub.
+See [Creating a pull request][pr].
+
+Having trouble working with the plugin? Found a typo in the documentation?
+Interested in adding a feature or [fixing a bug](https://github.com/splunknova/fluentd/issues)?
+Then [submit an issue](https://github.com/splunknova/fluentd/issues/new)
+or [pull request](https://help.github.com/articles/using-pull-requests/).
 
 ## Submit a Pull Request
 
-Contributing is a great way to learn more about new technologies and how to create helpful bug reports, feature requests and a good, clean pull request.
+Contributing is a great way to learn more about new technologies and how to create helpful bug reports,
+feature requests and a good, clean pull request.
 
 ### Before You Start!
 
@@ -19,16 +27,19 @@ To set up your environment to develop this plugin, you'll first need to run test
 
 1. Install the related libraries:
 
-   ```
+   ```bash
    bundle install --path vendor/bundle
    ```
-2. Run the tests:
-   ```
+
+1. Run the tests:
+
+   ```bash
    bundle exec rake test
    ```
+
 This starts a server using the in the `test_out_splunknova.rb` file.
 
-3. Open your browser and verify `http://localhost:0000/test/`.
+1. Open your browser and verify `http://localhost:0000/test/`.
 
 As modifications are made to the plugin and test site, it will regenerate and you should see the changes in the browser after a refresh.
 
