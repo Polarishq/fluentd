@@ -125,12 +125,12 @@ Support for multi line events.
     ```bash
     git@github.com:splunknova/fluentd.git
     ```
-2. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
+1. Use [homebrew] to install [ruby] and [bundler]. Once these dependencies are installed, from the command line run:
 
    ```bash
    brew install ruby
    ```
-3. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
+1. Fetch and update bundled gems by running the following [Bundler](http://bundler.io/) command:
    ```bash
    gem install bundler
    ```
@@ -142,9 +142,9 @@ To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes
 
 ### Configure
 
-1.To configure the Kubernetes fluentd Splunk Nova daemonset plugin, open the file: `fluentd-daemonset-splunknova.yaml`
+1. To configure the Kubernetes fluentd Splunk Nova daemonset plugin, open the file: `fluentd-daemonset-splunknova.yaml`
 
-2.Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
+1. Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
 
     ```yaml
     - name:  SPLUNK_URL
@@ -153,15 +153,15 @@ To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes
     value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
     ```
 
-3.Save and close the file.
+1. Save and close the file.
 
-4.From the command line,change directories into the `splunknova/fluentd` repo. Create a daemonset by running:
+1. From the command line,change directories into the `splunknova/fluentd` repo. Create a daemonset by running:
 
      ```bash
      kubectl create -f fluentd-daemonset-splunknova.yaml
      ```
 
-5.Start monitoring your Kubernetes cluster.
+1. Start monitoring your Kubernetes cluster.
 
 ### Create a docker image
 

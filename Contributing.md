@@ -14,7 +14,7 @@ or [pull request](https://help.github.com/articles/using-pull-requests/).
 Contributing is a great way to learn more about new technologies and how to create helpful bug reports,
 feature requests and a good, clean pull request.
 
-### Before You Start!
+### Before You Start
 
 - First, create a fork, or copy, of the repository. If you have an existing fork, please make sure it's up to date by syncing the repo. See the [Fork A Repo](https://help.github.com/articles/fork-a-repo) article.
 
