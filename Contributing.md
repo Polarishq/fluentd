@@ -55,14 +55,15 @@ As modifications are made to the plugin and test site, it will regenerate and yo
 
 Keep your fork up to date
 
-```
+```bash
 git checkout master
 git pull upstream master
 git push origin master
 ```
+
 Delete your topic branch if you like
 
-```
+```bash
 git branch -dr fix-typo-in-readme
 ```
 

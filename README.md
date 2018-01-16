@@ -1,12 +1,16 @@
-### What it is
+# Nova fluentd plugin
+
+[![Travis Status for Nova fluentd plugin](https://travis-ci.org/splunknova/fluentd.svg?branch=master)](https://travis-ci.org/splunknova/fluentd)
+
+## What it is
 
 Splunk Nova provide cloud APIs for logging and analyzing your app. Fluentd is an open source data collector that decouples data sources from backend systems by providing a unified logging layer in between. This layer allows developers and data analysts to utilize many types of logs as they are generated and send them directly to Splunk Nova.
 
-### What it does
+## What it does
 
 Splunk Nova Cloud APIs with the fluentd plugin help you quickly collect your logs, events, and metrics to make sense of data points in your apps and infrastructure.
 
-### Why use it?
+## Why use it?
 
 **Use the Fluentd plugin with Splunk Nova**
 
@@ -22,11 +26,11 @@ Works best on macOS and Linux.
 
 ### Prerequisities
 
--   [Bundler]
--   [Fluentd]
--   [Homebrew]
--   [Ruby]
--   [Splunk Nova][nova] API Keys
+- [Bundler]
+- [Fluentd]
+- [Homebrew]
+- [Ruby]
+- [Splunk Nova][nova] API Keys
 
 ## Install
 
@@ -73,13 +77,13 @@ config_param :splunk_url_path,  :string,   :default => '/v1/events'
 
 Verify that the splunknova/fluentd plugin is configured correctly to communicate with Splunk Nova:
 
-```
+```bash
 Run verify command here
 ```
 
 Expected output:
 
-```
+```bash
 Huzzah,it's working!
 ```
 
@@ -102,16 +106,16 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 Uses Splunk Nova to ingest data.
 Support for multi line events.
 
--   Collect events and stats, allows you to correlate logs with metrics.
--   Delivering host specific logs allows us to monitor components of a cluster.
--   Log collection uses JSON logging driver.
--   Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
+- Collect events and stats, allows you to correlate logs with metrics.
+- Delivering host specific logs allows us to monitor components of a cluster.
+- Log collection uses JSON logging driver.
+- Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
 
 ### Prerequisities
 
--   [Splunk Nova][nova] API Keys
--   Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
--   `kubectl` is required, see [Install and Set Up kubectl](http://kubernetes.io/docs/user-guide/prereqs/).
+- [Splunk Nova][nova] API Keys
+- Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
+- `kubectl` is required, see [Install and Set Up kubectl](http://kubernetes.io/docs/user-guide/prereqs/).
 
 ## Install
 
@@ -138,9 +142,9 @@ To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes
 
 ### Configure
 
-1.  To configure the Kubernetes fluentd Splunk Nova daemonset plugin, open the file: `fluentd-daemonset-splunknova.yaml`
+1.To configure the Kubernetes fluentd Splunk Nova daemonset plugin, open the file: `fluentd-daemonset-splunknova.yaml`
 
-2.  Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
+2.Within the file, edit the `SPLUNK_URL` and `SPLUNK_TOKEN` values using your Splunk Nova API Keys. The `SPLUNK_URL` is your Splunk Nova `api-username`. The `SPLUNK_TOKEN` is your Base-64 encoded token.
 
     ```yaml
     - name:  SPLUNK_URL
@@ -149,15 +153,15 @@ To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes
     value: "SlA0KjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0TreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSa=="
     ```
 
-3.  Save and close the file.
+3.Save and close the file.
 
-4.  From the command line,change directories into the `splunknova/fluentd` repo. Create a daemonset by running:
+4.From the command line,change directories into the `splunknova/fluentd` repo. Create a daemonset by running:
 
      ```bash
      kubectl create -f fluentd-daemonset-splunknova.yaml
      ```
 
-5.  Start monitoring your Kubernetes cluster.
+5.Start monitoring your Kubernetes cluster.
 
 ### Create a docker image
 
@@ -165,16 +169,16 @@ To create a snapshot of your K8a fluentd container, you may choose to create a d
 
 From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
-    ```
+    ```bash
     docker build -t splunknova/fluentd k8_image/docker_image
     ```
 
 ## Additional Resources
 
--   [K8s Logging architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
--   [K8s Cluster debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
--   [Fluentd K8s logging](https://docs.fluentd.org/v0.12/articles/kubernetes-fluentd)
--   [Fluentd K8s logging daemon code](https://github.com/fluent/fluentd-kubernetes-daemonset)
+- [K8s Logging architecture](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
+- [K8s Cluster debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
+- [Fluentd K8s logging](https://docs.fluentd.org/v0.12/articles/kubernetes-fluentd)
+- [Fluentd K8s logging daemon code](https://github.com/fluent/fluentd-kubernetes-daemonset)
 
 ## Contribute
 
