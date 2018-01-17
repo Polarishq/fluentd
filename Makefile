@@ -7,9 +7,9 @@ build_image:
 push: raketest build_image
 	docker push ${PLUGIN_NAME}:latest
 
-install:
+installgem:
 	gem install bundler
 	bundle install --path vendor/bundle
 
-raketest:
+raketest: installgem
 	bundle exec rake test
