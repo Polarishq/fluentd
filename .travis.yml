@@ -1,6 +1,9 @@
 sudo: required
 language: ruby
 
+gemfile:
+ - Gemfile
+
 services:
 - docker
 
@@ -9,19 +12,19 @@ env:
   - secure: ipsrLZPEp63Bxp/LzcOn2hk9eLGB1qqX7q5hL2N8cQeYz5bAlL/+dnl2rbqZ6zJVHMqlsiE273HxydKWvcySIknGWGrVPbm5u7efxxvIVt+bYulwif6T9izEdmzddm7pegJoM1upv7abPYeuJF0RdYHe87zxVN04aqKOQTqUcpXzbMIMTaCSpeDRilFzcDlG1C+03cE5pQTd9VeOqZECrgThJ47Z8Na5UixWZLbrDDlDIp2z4lfWV2iSIyygvDZyf3zsx0qYaoE1QCKVBdSjaAkRmtbSG0VIWD7EwxH6UdiYfaHkKpAnMD/MjrXKtE7p7fgN+3KMJEqP55Gd5979aWyAaU026SmMbM7NGBwei++lUKBj2PYElJO1QJKywjxUIWFKZfX2nRQma6UUgMGfn6EwctpJ6fWL3S0a7uA1MY9IHCnRCZ/rstwW7+s4z80mjUO7rXMfdTPQhsDPhSfnnwHAsSOE6TOg/E1zxGmyPVpkd4Z0myVLMtxY6l5cvvNHISYZDAQAUXnlpEm/K2zyp+2+ZHAA/GfsNs9Y/SViyss+COEWndDJ0Sw2LH06jnhrgx+2blU3TLGZontonxOH8rVJV7AMQhm1oCpedCKqOARjn2XFPne0Ip6ECWxkyGBq80b8Hc5II9u1MHOzPAueCk652ZbsV3ttw1lmKqaY/9w=
   - secure: aR4PDNisYfyGG5LWJw1syDHN7Q58hRGOwMEpmPHOpmFF+/cUXydNl9x3ASvOJ72q8EVTl+qwOhq34Odbxu+bzROb4SD5XITs8n7Ga1k1/z0LgX/10TR+M6zxuyePAgA833ms2DemWyHfbVXqab+FB1EZI5Rn2aAW4472Tc7T9M3JcWfbQF3NQ67hHUzz272lg+PQ2gydlCMlWDsXrEVJEQxjrMFOofR9MWHS3LBUoyA/3H9ZZFYngV8ETlR6xfSwXNUdZhqQzTdQqD9TuXGnuLtwIJtRvuxrKCaz2P7pWSJK5TQ3Xjv6lxXU+y1Cq/AJeYXKN4dXQxk0lc67+yzuJE0ybC9Gu0yqwGGZ8aBAuCofMXv3MclqiF+4YNgd0IBz73KXhCe0U7GhU5uDeCDcoGUzKQGM3rhAJd3cytuH6owI7gFY7s5Az7/59XUC/ajKZJLM8Yk9F3EQe5prFRlGiHMs02jXMYq6chUIemWW96zyTDlksILjzWFCwPvflC21e/AzZLZP0spgJee44Q4/WP37nq2kIOt1vD1wpnaWLm0/NNKZsGmIWsKZnKxAs2hwJDU5BBuFEriTcDpjUntxvTtiERwLU91D0y50OcEWHwitRqnPa+bBTq9MZcCR7VQ6JwlxCfVQVZTmDiCLZhncnykWLALzKBuPjcc3Llu0qRw=
 
+rvm:
+  - 2.3.1
+
+
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get -y --no-install-recommends install bash git sudo make gcc g++ libc-dev
   ruby-dev libffi-dev
-- gem install bundler
 
-install:
-- bundle install
 
 before_script:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
 script:
-- gem install bundler
-- pwd
-- ls -lrt
-- bundle install
+- bundle exec rake test
+- make push
