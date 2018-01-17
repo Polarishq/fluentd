@@ -37,6 +37,7 @@ Works best on macOS and Linux.
 ### macOS
 
 1. Clone or download the Splunk Nova Fluentd plugin.
+
     ```bash
     git@github.com:splunknova/fluentd.git
     ```
@@ -68,8 +69,8 @@ You're now ready to configure the Fluentd plugin with your Splunk Nova API crede
 * **splunk_format:** Then Splunk format `nova` by default
 * **splunk_url_path:** The Splunk entry point `/services/collector/event` by default (<--this OR `v1/events`?)
 
-
 **Example**
+
 ```ruby
 config_param :splunk_url,       :string,   :default => 'api.splunknova.com:443'
 config_param :splunk_token,     :string    :default => 'QmFzZS02NCBFbmNvZGVkIFNwbHVuayBOb3ZhIEFQSSBLZXk='
@@ -116,7 +117,7 @@ Support for multi line events.
 ### Prerequisities
 
 - [Splunk Nova][nova] API Keys
-- Access to the [docker hub][dhub] repo: https://hub.docker.com/r/polarishq/fluentd_splunknova.
+- Access to the [docker hub][dhub] repo: [docker hub](https://hub.docker.com/r/splunknova/fluentd/).
 - `kubectl` is required, see [Install and Set Up kubectl](http://kubernetes.io/docs/user-guide/prereqs/).
 
 ## Install
