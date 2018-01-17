@@ -9,6 +9,7 @@ push: raketest build_image
 
 installgem:
 	gem install bundler
+	ls -lrt
 	bundle install --path vendor/bundle
 
 raketest: installgem
