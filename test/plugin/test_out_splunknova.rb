@@ -19,7 +19,7 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
     ]
 
     def create_driver_slunknova(conf = CONFIG)
-        Fluent::Test::BufferedOutputTestDriver.new(Fluent::SplunkNovaOutput).configure(conf)
+        Fluent::Test::OutputTestDriver.new(Fluent::SplunkNovaOutput).configure(conf)
     end
 
 
