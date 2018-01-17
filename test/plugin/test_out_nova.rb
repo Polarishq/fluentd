@@ -5,7 +5,6 @@ require 'webmock/test_unit'
 class SplunkNovaOutputTest < Test::Unit::TestCase
     SPLUNK_URL = 'https://api-bbourbie.splunknovadev.com:443'
     SPLUNK_TOKEN = 'QlA0YjdYcTJFVURGTkJaVGNUbURNT0pOSWJ2MzU4R1A6aHptUWFLT0JreWVTVjZyV3ZkdXdzWlhkVzBEdzgycDMxLVZDOTNkZG5ncDN2T1ZNaTY2bmN3NXdzak1LcGpWSg=='
-    SPLUNK_FORMAT = 'nova'
     SPLUNK_URL_PATH = '/v1/events'
 
     SPLUNK_FULL_URL = "#{SPLUNK_URL}#{SPLUNK_URL_PATH}"
@@ -14,8 +13,6 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
     CONFIG = %[
       splunk_url #{SPLUNK_URL}
       splunk_token #{SPLUNK_TOKEN}
-      splunk_format #{SPLUNK_FORMAT}
-      splunk_url_path #{SPLUNK_URL_PATH}
     ]
 
     def create_driver_slunknova(conf = CONFIG)
@@ -25,7 +22,7 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
 
     def setup
         Fluent::Test.setup
-        require 'fluent/plugin/out_splunknova'
+        require 'fluent/plugin/out_nova'
         stub_request(:any, SPLUNK_FULL_URL)
       end
 
@@ -33,8 +30,6 @@ class SplunkNovaOutputTest < Test::Unit::TestCase
         d = create_driver_slunknova
         assert_equal SPLUNK_URL, d.instance.splunk_url
         assert_equal SPLUNK_TOKEN, d.instance.splunk_token
-        assert_equal SPLUNK_FORMAT, d.instance.splunk_format
-        assert_equal SPLUNK_URL_PATH, d.instance.splunk_url_path
       end
 
     def test_should_require_mandatory_parameter_token

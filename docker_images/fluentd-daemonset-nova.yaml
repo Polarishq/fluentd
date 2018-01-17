@@ -20,16 +20,12 @@ spec:
         effect: NoSchedule
       containers:
       - name: fluentd
-        image: polarishq/fluentd_splunknova
+        image: splunknova/fluentd
         env:
           - name:  SPLUNK_URL
             value: 'https://api.splunknova.com:443'
           - name:  SPLUNK_TOKEN
             value: "<YOUR BASE64 ENCODED API KEY>=="
-          - name: SPLUNK_FORMAT
-            value: "nova"
-          - name: SPLUNK_URL_PATH
-            value: "/v1/events"
         resources:
           limits:
             memory: 200Mi
