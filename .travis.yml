@@ -11,6 +11,6 @@ before_install:
   - sudo apt-get -y --no-install-recommends install bash git sudo make gcc g++ libc-dev ruby-dev libffi-dev
 
 before_script:
-- echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 script:
 - make push
