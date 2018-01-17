@@ -24,7 +24,7 @@ unless ENV.has_key?("VERBOSE")
   $log = nulllogger
 end
 
-require "fluent/plugin/out_splunknova"
+require "fluent/plugin/out_nova"
 
 class Test::Unit::TestCase
 end

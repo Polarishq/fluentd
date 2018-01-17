@@ -57,9 +57,9 @@ You're now ready to configure the Fluentd plugin with your Splunk Nova API crede
 
 ### Configure
 
-1. Configure your  `out_splunknova.rb` file by navigating to the plugin directory: `lib` > `fluent` > `plugin` directory.
+1. Configure your  `out_nova.rb` file by navigating to the plugin directory: `lib` > `fluent` > `plugin` directory.
 1. Login to Splunk Nova and grab your [API Keys][apikeys].
-1. Open the `out_splunknova.rb` file.
+1. Open the `out_nova.rb` file.
 1. Configure the fluentd plugin, by editing the following values using your Splunk Nova `api-username` and `Base-64 encoded token`. Save and close the file.
 
 **Sample**

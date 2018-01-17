@@ -37,7 +37,7 @@ To set up your environment to develop this plugin, you'll first need to run test
    bundle exec rake test
    ```
 
-This starts a server using the in the `test_out_splunknova.rb` file.
+This starts a server using the in the `test_out_nova.rb` file.
 
 1. Open your browser and verify `http://localhost:0000/test/`.
 

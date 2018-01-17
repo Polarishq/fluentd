@@ -1,1 +1,0 @@
-../../../lib/fluent/plugin/out_splunknova.rb
