@@ -167,19 +167,21 @@ To create a local Kubernetes cluster., see [Hello Minikube][hello], a kubernetes
 1. From the command line,change directories into the `splunknova/fluentd` repo. Create a daemonset by running:
 
      ```bash
-     kubectl create -f fluentd-daemonset-splunknova.yaml
+    kubectl create -f fluentd-daemonset-splunknova.yaml
      ```
 
 1. Start monitoring your Kubernetes cluster.
 
-### Create a docker image
+### Pull a docker image
 
-To create a snapshot of your K8a fluentd container, you may choose to create a docker image. Docker images are created with the build command, and produce a container when started with the `run` command. Images are stored in a Docker registry: https://hub.docker.com/.
+<!-- TODO: docker run command-->
+
+To pull a snapshot of your K8a fluentd container, you may choose to create a docker image. Docker images are created with the build command, and produce a container when started with the `run` command. Images are stored in a Docker registry: https://hub.docker.com/.
 
 From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
     ```bash
-    docker build -t splunknova/fluentd k8_image/docker_image
+      docker pull splunknova/fluentd
     ```
 
 ## Additional Resources
