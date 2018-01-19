@@ -4,7 +4,7 @@
 
 ## What it is
 
-Splunk Nova provide cloud APIs for logging and analyzing your app. Fluentd is an open source data collector that decouples data sources from backend systems by providing a unified logging layer in between. This layer allows developers and data analysts to utilize many types of logs, as they are generated, and sends them directly to Splunk Nova.
+Splunk Nova provides cloud APIs for logging and analyzing your app. Fluentd is an open source data collector that decouples data sources from backend systems by providing a unified logging layer in between. This layer allows developers and data analysts to utilize many types of logs, as they are generated, and sends them directly to Splunk Nova.
 
 ## What it does
 
@@ -16,11 +16,9 @@ Splunk Nova Cloud APIs with the fluentd plugin help you quickly collect your log
 
 Use the Splunk Nova Fluentd plugin to send events and logs directly to Splunk Nova. In minutes, you can easily query these events using the Splunk [Nova-CLI].
 
-1. **Use the Splunk Nova Fluentd plugin with Kubernetes (K8s) and Docker**
-
+2. **Use the Splunk Nova Fluentd plugin with Kubernetes (K8s) and Docker**
 
 The Fluentd Nova plugin is containerized in a Docker image. This Docker image is used in a Kubernetes orchestrated cluster as a login system daemonset. The Fluentd Nova plugin gathers all logs from all running containers in a Kubernetes cluster. These logs are redirected to Splunk Nova and can be queried instantaneously.
-
 
 ## 1. Use the Fluentd plugin with Splunk Nova
 
@@ -32,7 +30,7 @@ Works best on macOS and Linux.
 - [Fluentd]
 - [Homebrew]
 - [Ruby]
-- [Splunk Nova][nova] API Keys
+- [Splunk Nova API Keys][nova]
 
 ## Install
 
@@ -104,7 +102,7 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 
 **Splunk Nova Output**: The Splunk Nova plugin is a Fluentd output component that sends ingested data to Splunk Nova.
 
-**K8s Add-on** (optional): K8s add-on are responsible for managing/config the daemonset through K8s API knowledge objects such asfield extraction, monitor dash board, etc.
+**K8s Add-on** (optional): K8s add-on are responsible for managing/config the daemonset through K8s API knowledge objects such asfield extraction, monitor dashboard, etc.
 
 **Features:**
 
@@ -115,6 +113,7 @@ Support for multi line events.
 - Delivering host specific logs allows us to monitor components of a cluster.
 - Log collection uses JSON logging driver.
 - Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
+
 
 ### Prerequisities
 
@@ -143,7 +142,6 @@ Support for multi line events.
      ```
 
 1. Start monitoring your Kubernetes cluster.
-
 
 
 ### Pull a docker image
