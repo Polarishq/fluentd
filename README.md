@@ -96,7 +96,7 @@ Profit!
 
 [Kubernetes], is an open source framework that orchestrates and automate container deployments. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
 
-A [daemonset] is a K8s concept that is automatically deployed on each node of a K8s cluster.  Fluentd Nova plugin is used as a daemonset, running a docker container. The daemonset ingests system and application logs and sends these data to Splunk Nova. One Docker container instance runs on each node of the cluster.
+A [daemonset] is a K8s concept that is automatically deployed on each node of a K8s cluster. The Fluentd Nova plugin is used as a daemonset which runs a docker container. The daemonset ingests system and application logs and sends the data to Splunk Nova. One Docker container instance runs on each node of the cluster.
 
 **Fluentd K8s Input**: The K8s plugin is a Fluentd input component that pulls logs.
 
@@ -104,16 +104,14 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 
 **K8s Add-on** (optional): K8s add-on are responsible for managing/config the daemonset through K8s API knowledge objects such asfield extraction, monitor dashboard, etc.
 
-**Features:**
+![Fluentd Nova K8s flow](/images/FluentdNovaflowK8s.png)
 
-Uses Splunk Nova to ingest data.
-Support for multi line events.
+**Features:**
 
 - Collect events and stats, allows you to correlate logs.
 - Delivering host specific logs allows us to monitor components of a cluster.
 - Log collection uses JSON logging driver.
 - Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
-
 
 ### Prerequisities
 
