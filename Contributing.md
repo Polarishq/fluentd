@@ -1,22 +1,22 @@
 # Contributing to Splunk Nova
 
-Thanks! [Splunk Nova] wouldn't be what it is without your help. Thanks for contributing.
-Please make your contributions as pull requests via GitHub.
-See [Creating a pull request][pr].
-
-Having trouble working with the plugin? Found a typo in the documentation?
+[Splunk Nova][splunknova] wouldn't be what it is without your help. Having trouble working with the plugin? Found a typo in the documentation?
 Interested in adding a feature or [fixing a bug](https://github.com/splunknova/fluentd/issues)?
 Then [submit an issue](https://github.com/splunknova/fluentd/issues/new)
-or [pull request](https://help.github.com/articles/using-pull-requests/).
+or [pull request](https://help.github.com/articles/using-pull-requests/). Thanks for contributing!
 
 ## Submit a Pull Request
 
-Contributing is a great way to learn more about new technologies and how to create helpful bug reports,
-feature requests and a good, clean pull request.
+Please make your contributions as pull requests via GitHub.
+See [Creating a pull request][pr]. Contributing is a great way to learn more about new technologies and how to create helpful bug reports, feature requests and a good, clean pull request.
+
+- Read the GitHub Guide on [Forking](https://guides.github.com/activities/forking/), especially the part about
+  [Pull Requests](https://guides.github.com/activities/forking/#making-a-pull-request).
+- Remember, pull requests are submitted *from* your repo, but show up on the *upstream* repo.
 
 ### Before You Start
 
-- First, create a fork, or copy, of the repository. If you have an existing fork, please make sure it's up to date by syncing the repo. See the [Fork A Repo](https://help.github.com/articles/fork-a-repo) article.
+- First, create a fork, or copy, of the repository. If you have an existing fork, please make sure it's up to date by syncing the repo. See [Fork a repo](https://help.github.com/articles/fork-a-repo) and [Syncing a fork](https://help.github.com/articles/syncing-a-fork) articles for more information.
 
 - Create a branch off of `master` before you start working, and give it a meaningful name such as what you plan to change. For example: `fix-typo-in-readme` or `my-new-feature`.
 - To create a local branch, you can use `git checkout -b fix-typo-in-readme`.
@@ -44,23 +44,16 @@ This starts a server using the in the `test_out_nova.rb` file.
 As modifications are made to the plugin and test site, it will regenerate and you should see the changes in the browser after a refresh.
 
 - Push to a branch on GitHub. Just like you developed in a local branch, you should push to a branch of your repo on GitHub. To push to a branch,
-  if your branch is named "fix-typo-in-readme", use `git push origin fix-typo-in-readme`.
+  if your branch is named `fix-typo-in-readme`, use `git push origin fix-typo-in-readme`.
 
-## Submitting a Pull Request
-
-- Read the GitHub Guide on [Forking](https://guides.github.com/activities/forking/), especially the part about
-  [Pull Requests](https://guides.github.com/activities/forking/#making-a-pull-request).
-
-- Remember, pull requests are submitted *from* your repo, but show up on the *upstream* repo.
 
 ### Discussion and Waiting On a Merge
 
 - Every pull request will receive a response from the team.
 - Not every pull request will be merged as is.
 - Not every pull request will be merged at all.
-- If a pull request falls significantly behind master, we may ask that you close it, rebase your changes off of `master`, and submit a new pull request.
-- Feel free to "ping" the [Splunk Nova team][slacknova] on :slack: or :github: by adding a short comment to your pull request
-  if it's been more than a week with no reply.
+- If a pull request falls significantly behind the master branch, we may ask that you close it, rebase your changes off of `master`, and submit a new pull request.
+- Feel free to "ping" the [Splunk Nova team][slacknova] on :slack: or :github: by adding a short comment to your pull request if it's been more than a week with no reply.
 
 ### After your merge has been accepted
 

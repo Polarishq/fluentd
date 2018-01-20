@@ -94,7 +94,7 @@ Profit!
 
 ## 2. Use the Splunk Nova Fluentd plugin with Kubernetes (K8s) and Docker
 
-[Kubernetes], is an open source framework that orchestrates and automate container deployments. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
+[Kubernetes], is an open source framework that orchestrates and automates container deployments. The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s is an abbreviation derived by replacing the 8 letters “ubernete” with “8”.
 
 A [daemonset] is a K8s concept that is automatically deployed on each node of a K8s cluster. The Fluentd Nova plugin is used as a daemonset which runs a docker container. The daemonset ingests system and application logs and sends the data to Splunk Nova. One Docker container instance runs on each node of the cluster.
 
@@ -108,8 +108,8 @@ A [daemonset] is a K8s concept that is automatically deployed on each node of a 
 
 **Features:**
 
-- Collect events and stats, allows you to correlate logs.
-- Delivering host specific logs allows us to monitor components of a cluster.
+- Collects events and stats to correlate logs across containers.
+- Delivers host specific logs allows monitoring of components in a cluster.
 - Log collection uses JSON logging driver.
 - Enriches logs with kubernetes metadata (container, image, pod, daemon sets, jobs, cron jobs, etc).
 
@@ -150,9 +150,9 @@ To pull a snapshot of your K8a fluentd container, you may choose to create a doc
 
 From within the terminal, change directories into the   `splunknova/fluentd` repo, and run:
 
-    ```bash
-      docker pull splunknova/fluentd
-    ```
+```bash
+docker pull splunknova/fluentd
+```
 
 ## Additional Resources
 
